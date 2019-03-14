@@ -1,1 +1,28 @@
-var anime = ["", "",];
+body {
+    background: lightgrey;
+    font-family: 'Varela Round', sans-serif;
+}
+
+h2 {
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 38px;
+}
+
+h4 {
+    margin-bottom: -20px;
+}
+
+#buttons-view {
+    margin: 20px;
+}
+
+.btn-secondary {
+    margin: 3.5px;
+}
+
+#formGroupExampleInput {
+    margin: 0;
+    width: 205px;
+}
+
