@@ -2,37 +2,37 @@ $(document).ready(function () {
     // Global Variabels
 
     // array of strings as "topics" or topic
-    var animes = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assasination Classroom"];
+    var animesArray = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assasination Classroom"];
 
     // Functions
     function renderButtons() {
         // makes sure the buttons don't repeat themselves
         $("#buttons-view").empty();
         // put animes on the page as buttons (for loop)
-        for (var i = 0; i < animes.length; i++) {
+        for (var i = 0; i < animesArray.length; i++) {
             // creates the var animeButton and makes a new button
             // appends the anime button to the buttons-view div
             // adds the data attribute and sets it to anime[i]
-            $("#buttons-view").append("<button class='btn btn-secondary' data-anime='" + animes[i] + "'>" + animes[i] + "</button>")
+            $("#buttons-view").append("<button class='btn btn-secondary' data-anime='" + animesArray[i] + "'>" + animesArray[i] + "</button>")
         }
     }
     renderButtons()
 
     $("#buttons-view").on("click", function () {
         // assigns anime to the data - attribute 
-        var anime = $(this).attr("data-anime");
+        var animeURL = $("this").attr("data-anime");
         // var anime = "naruto"; this one works 
         // &limit=10 limits the response by 10 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeURL + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
         // link the api using ajax
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function (response) {
-            console.log(response)
-            console.log(queryURL)
+        })
+        .then(function (response) {
             var results = response.data;
             $("#giphy").empty();
+            console.log(queryURL)
             for (var i = 0; i < results.length; i++) {
                 // show the giphy rating under each giphy 
                 $("#giphy").prepend("<p>Rating of Giph: " + results[i].rating + "</p>");
@@ -62,7 +62,7 @@ $(document).ready(function () {
     $("#submit-button").on("click", function() {
         event.preventDefault();
         var newAnime = $("#formGroupExampleInput").val();
-        animes.push(newAnime);
+        animesArray.push(newAnime);
         renderButtons();
     });
 
