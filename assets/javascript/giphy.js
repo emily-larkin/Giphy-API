@@ -13,34 +13,36 @@ $(document).ready(function () {
             // creates the var animeButton and makes a new button
             // appends the anime button to the buttons-view div
             // adds the data attribute and sets it to anime[i]
-            $("#buttons-view").append("<button class='btn btn-secondary' data-anime='" + animesArray[i] + "'>" + animesArray[i] + "</button>")
+            $("#buttons-view").append("<button class='btn btn-secondary' data-anime='" + animesArray[i] + "'>" + animesArray[i] + "</button>");
         }
     }
     renderButtons()
 
-    $("#buttons-view").on("click", function () {
+    $(".btn-secondary").on("click", function () {
+        // link the api using ajax
         // assigns anime to the data - attribute 
-        var animeURL = $("this").attr("data-anime");
-        // var anime = "naruto"; this one works 
+        var animeURL = $("#buttons-view").attr("data-anime", "?????");
+        // var anime = "naruto"; this one works
         // &limit=10 limits the response by 10 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeURL + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
-        // link the api using ajax
+        
+        animeURL = $("#buttons-view").attr("data-anime");
         $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-        .then(function (response) {
-            var results = response.data;
-            $("#giphy").empty();
-            console.log(queryURL)
-            for (var i = 0; i < results.length; i++) {
-                // show the giphy rating under each giphy 
-                $("#giphy").prepend("<p>Rating of Giph: " + results[i].rating + "</p>");
-                // when the user clicks that button, we want the corresponding giphys to come back 
-                $("#giphy").prepend('<img src=" ' + results[i].images.fixed_height.url + '"class="gif" data-state="animate" data-animate="' + results[i].images.fixed_height.url + '" data-still="' + results[i].images.fixed_height_still.url + '">');
-                $("#giphy").prepend("<br>")
-            }
-        });
+                url: queryURL,
+                method: "GET"
+            })
+            .then(function (response) {
+                var results = response.data;
+                $("#giphy").empty();
+                console.log(queryURL)
+                for (var i = 0; i < results.length; i++) {
+                    // show the giphy rating under each giphy 
+                    $("#giphy").prepend("<p>Rating of Giph: " + results[i].rating + "</p>");
+                    // when the user clicks that button, we want the corresponding giphys to come back 
+                    $("#giphy").prepend('<img src=" ' + results[i].images.fixed_height.url + '"class="gif" data-state="animate" data-animate="' + results[i].images.fixed_height.url + '" data-still="' + results[i].images.fixed_height_still.url + '">');
+                    $("#giphy").prepend("<br>")
+                }
+            });
     });
 
     // all giphys should be static at first 
@@ -59,7 +61,7 @@ $(document).ready(function () {
     }
 
     // add search option (as a form) to be able to add more buttons based on the input - last step
-    $("#submit-button").on("click", function() {
+    $("#submit-button").on("click", function () {
         event.preventDefault();
         var newAnime = $("#formGroupExampleInput").val();
         animesArray.push(newAnime);
