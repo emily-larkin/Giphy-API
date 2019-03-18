@@ -4,8 +4,7 @@ $(document).ready(function () {
     // array of strings as "topics" or topic
     var animes = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assasination Classroom"];
 
-
-
+    // Functions
     function renderButtons() {
         // makes sure the buttons don't repeat themselves
         $("#buttons-view").empty();
@@ -19,15 +18,13 @@ $(document).ready(function () {
     }
     renderButtons()
 
-    // Functions
     $("#buttons-view").on("click", function () {
         // assigns anime to the data - attribute 
         var anime = $(this).attr("data-anime");
         // var anime = "naruto"; this one works 
         // &limit=10 limits the response by 10 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
         // link the api using ajax
-        $("#giphy").empty();
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -61,20 +58,17 @@ $(document).ready(function () {
         }
     }
 
-
     // add search option (as a form) to be able to add more buttons based on the input - last step
-    $("#submit-button").on("click", function () {
+    $("#submit-button").on("click", function() {
         event.preventDefault();
         var newAnime = $("#formGroupExampleInput").val();
         animes.push(newAnime);
         renderButtons();
     });
 
-
     // Main Process
 
     // calls the function whenever the gif class is clicked on... wasn't working as an on click function
     $(document).on("click", ".gif", changeState)
-
 
 });
