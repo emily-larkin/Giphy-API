@@ -21,7 +21,6 @@ $(document).ready(function () {
     $(".btn-secondary").on("click", function () {
         // assigns anime to the data - attribute 
         var animeURL = $(this).attr("data-anime"); // sets
-        console.log(animeURL);
         // &limit=10 limits the response by 10 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeURL + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
         
@@ -33,7 +32,6 @@ $(document).ready(function () {
             .then(function (response) {
                 var results = response.data;
                 $("#giphy").empty();
-                console.log(queryURL)
                 for (var i = 0; i < results.length; i++) {
                     // show the giphy rating under each giphy 
                     $("#giphy").prepend("<p>Rating of Giph: " + results[i].rating + "</p>");
