@@ -2,7 +2,7 @@ $(document).ready(function () {
     // Global Variabels
 
     // array of strings as "topics" or topic
-    var animesArray = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assassination Classroom"];
+    var animesArray = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Ancient Magus' Bride", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assassination Classroom"];
 
     // Functions
     function renderButtons() {
