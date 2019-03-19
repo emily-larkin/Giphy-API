@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     $(".btn-secondary").on("click", function () {
         // assigns anime to the data - attribute 
-        var animeURL = $(this).attr("data-anime"); // sets
+        var animeURL = $(this).attr("data-anime");
         // &limit=10 limits the response by 10 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeURL + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
         
@@ -58,7 +58,7 @@ $(document).ready(function () {
     }
 
     // add search option (as a form) to be able to add more buttons based on the input - last step
-    $("#submit-button").on("click", function () {
+    $("body").on("click", "#submit-button", function () {
         event.preventDefault();
         var newAnime = $("#formGroupExampleInput").val();
         animesArray.push(newAnime);
