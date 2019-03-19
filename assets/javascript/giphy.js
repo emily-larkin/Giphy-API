@@ -2,7 +2,7 @@ $(document).ready(function () {
     // Global Variabels
 
     // array of strings as "topics" or topic
-    var animesArray = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assasination Classroom"];
+    var animesArray = ["Naruto", "Naruto Shippuden", "Your Lie in April", "Dragon Ball", "Dragon Ball Z", "My Hero Academia", "Fullmetal Alchemist", "Seven Deadly Sins", "One Punch", "Attack on Titan", "Death Note", "Assassination Classroom"];
 
     // Functions
     function renderButtons() {
@@ -19,14 +19,13 @@ $(document).ready(function () {
     renderButtons()
 
     $(".btn-secondary").on("click", function () {
-        // link the api using ajax
         // assigns anime to the data - attribute 
-        var animeURL = $("#buttons-view").attr("data-anime", "?????");
-        // var anime = "naruto"; this one works
+        var animeURL = $(this).attr("data-anime"); // sets
+        console.log(animeURL);
         // &limit=10 limits the response by 10 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeURL + "&api_key=hK4UiyRDocGCchliJGOj7WBo7pLHz9Y9&limit=10";
         
-        animeURL = $("#buttons-view").attr("data-anime");
+        // link the api using ajax
         $.ajax({
                 url: queryURL,
                 method: "GET"
